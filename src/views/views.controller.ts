@@ -1,7 +1,7 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import { ViewsService } from './views.service';
 
-@Controller('views')
+@Controller()
 export class ViewsController {
     constructor(
         private readonly viewsService: ViewsService,
