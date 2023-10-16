@@ -3,9 +3,13 @@
 * Copyright 2013-2023 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
 */
+
 //
 // Scripts
 // 
+
+// import { MnemonicKey,Coins, LCDClient  } from "../../@xpla/xpla.js";
+// import fetch from "../../isomorphic-fetch";
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -48,6 +52,14 @@ window.addEventListener('DOMContentLoaded', event => {
             if (window.getComputedStyle(navbarToggler).display !== 'none') {
                 navbarToggler.click();
             }
+        });
+    });
+
+    const connectWallet = document.body.querySelector('#connectWalletBtn');
+
+    connectWallet.addEventListener('click', async () => {
+        await axios.post('/wallet/createXPLA').then((response) => {
+            console.log(response.data);
         });
     });
 

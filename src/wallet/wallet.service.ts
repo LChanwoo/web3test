@@ -20,16 +20,9 @@ export class WalletService {
               const lcd = new LCDClient({
                 URL: "https://cube-lcd.xpla.dev/",
                 chainID: "cube_47-5",
-                gasPrices: gasPricesCoins,
-                gasAdjustment: "1.5",
-                
               });
-            // const mnemonic = new MnemonicKey();
-            // const wallet = lcd.wallet(mnemonic);
-            const mk = new MnemonicKey({
-                mnemonic: "-> Input your 24-word mnemonic key here <-",
-              });
-              const wallet = lcd.wallet(mk);
+            const mnemonic = new MnemonicKey();
+            const wallet = lcd.wallet(mnemonic);
             return wallet;
 
         }catch(e){
