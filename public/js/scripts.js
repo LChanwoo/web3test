@@ -8,7 +8,6 @@
 // Scripts
 // 
 
-// import { MnemonicKey,Coins, LCDClient  } from "../../@xpla/xpla.js";
 // import fetch from "../../isomorphic-fetch";
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -58,8 +57,16 @@ window.addEventListener('DOMContentLoaded', event => {
     const connectWallet = document.body.querySelector('#connectWalletBtn');
 
     connectWallet.addEventListener('click', async () => {
-        await axios.post('/wallet/createXPLA').then((response) => {
-            console.log(response.data);
+
+        const MMSDK = new MetaMaskSDK.MetaMaskSDK()
+        // Because init process of the MetaMaskSDK is async.
+        setTimeout(() => {
+            const ethereum = window.ethereum // You can also access via window.ethereum
+
+            ethereum.request({ method: 'eth_requestAccounts' })
+        }, 0)
+        await axios.post('/wallet/create').then((response) => {
+            alert(response.data.address);
         });
     });
 
